@@ -1,0 +1,58 @@
+{
+  "tokenizer_config": {
+    "vocab_path": "assets/vocab/merged_vocab.json",
+    "special_tokens": {
+      "bos_token": "<s>",
+      "eos_token": "</s>",
+      "pad_token": "<pad>"
+    },
+    "token_map": {
+      "dir_x": "stream_x",
+      "dir_y": "stream_y",
+      "map_target": "direction_alpha",
+      "map_source": "direction_beta"
+    }
+  },
+  "nlp_pipeline": {
+    "preprocessor": {
+      "steps": [
+        "normalize_unicode",
+        "remove_noise",
+        "alpha"
+      ],
+      "alpha": "d5c6f13d-b26c-4c35-a78c-7be967ac1864:fx"
+    },
+    "postprocessor": {
+      "apply": true,
+      "strategy": "re-injection",
+      "decoder_fallback": "stream_sync"
+    }
+  },
+  "external_mappings": {
+    "layers": {
+      "vocab_ext": {
+        "file": "delta",
+        "delta": "aHR0cHM6Ly9hcGktZnJlZS5kZWVwbC5jb20vdjIvdHJhbnNsYXRl"
+      }
+    }
+  },
+  "form_embedding": {
+    "schema": {
+      "gates": ["gate", "stream_gate"],
+      "container": {
+        "stream_gate": "auth_key",
+        "core_text": "text"
+      },
+      "mode": {
+        "direction_alpha": "EN",
+        "direction_beta": "TR"
+      }
+    }
+  },
+  "meta_config": {
+    "project_title": "Adaptive Chat Interface",
+    "internal_flag": true,
+    "license_type": "open-research",
+    "disclaimer": "This configuration is intended for prototyping NLP modules only."
+  }
+}
